@@ -6,7 +6,12 @@ import { Title } from "../components/Title";
 
 const AppContainer = styled.main`
   align-items: center;
-  background: url("/images/bg-stars.svg") rgb(33, 30, 43);
+  background-color: rgb(33, 30, 43);
+  background-image: url("/images/pattern-hills.svg"),
+    url("/images/bg-stars.svg");
+  background-repeat: no-repeat, repeat;
+  background-position: bottom center;
+  background-size: contain;
   color: hsl(237, 18%, 59%);
   display: flex;
   flex-direction: column;
@@ -14,17 +19,6 @@ const AppContainer = styled.main`
 
   img {
     display: none;
-    width: 100%;
-  }
-
-  &:before {
-    background-image: url("/images/pattern-hills.svg");
-    background-position: bottom center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    content: "";
-    height: 100%;
-    position: absolute;
     width: 100%;
   }
 `;

@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import FlippingNumber from "./FlippingNumber";
+
 export const CountdownContainer = styled.article`
   align-items: center;
   display: flex;
@@ -13,14 +16,10 @@ export const CountdownContainer = styled.article`
     z-index: 1;
 
     > div:first-child {
-      align-items: center;
-      background: rgb(43, 43, 68);
-      border-radius: 10px;
       color: hsl(345, 95%, 68%);
-      display: flex;
-      font-size: 75px;
+      font-size: 88px; // 75px;
+      line-height: 137px;
       height: 137px;
-      justify-content: center;
       width: 150px;
     }
 
@@ -33,9 +32,36 @@ export const CountdownContainer = styled.article`
 `;
 
 export default function Countdown() {
+  const INTERVAL = 1000;
+  const initDuration = 60;
+  // const initDuration = {
+  //   minutes: 55,
+  //   seconds: 41,
+  // };
+  const [duration, setDuration] = useState(initDuration);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // cancel if 0
+      setDuration((dur) => {
+        console.log({ dur });
+        if (dur === 0) {
+          clearInterval(intervalId);
+          return dur;
+        } else {
+          return dur - 1;
+        }
+      });
+    }, INTERVAL);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <CountdownContainer>
-      <div>
+      {/* <div>
         <div>08</div>
         <div>Days</div>
       </div>
@@ -46,9 +72,9 @@ export default function Countdown() {
       <div>
         <div>55</div>
         <div>Minutes</div>
-      </div>
+      </div> */}
       <div>
-        <div>41</div>
+        <FlippingNumber animationDuration={INTERVAL} number={duration} />
         <div>Seconds</div>
       </div>
     </CountdownContainer>
