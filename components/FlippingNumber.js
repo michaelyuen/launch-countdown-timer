@@ -8,12 +8,23 @@ const flip = keyframes`
 
   100% {
     border-bottom: 1px solid black;
-    transform: rotateX(0.5turn);
+    transform: rotateX(-0.5turn);
     z-index: 1;
   }
 `;
 
+const show = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`;
+
 const FlippingNumberContainer = styled.div`
+  perspective: 500px;
   position: relative;
 
   div {
@@ -39,6 +50,29 @@ const FlippingNumberContainer = styled.div`
       box-shadow: 0px -2px 5px rgb(26, 26, 37), inset 0 2px rgba(0, 0, 0, 0.9),
         inset 0 3px 0 rgba(255, 255, 255, 0.4);
       height: 50%;
+
+      &.next {
+        &:before {
+          animation: ${({ animationDuration, shouldAnimate }) =>
+            shouldAnimate
+              ? css`
+                  ${show} ${animationDuration /
+                  2}ms ease-in reverse forwards ${animationDuration / 2}ms
+                `
+              : "none"};
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 1) 100%
+          );
+          content: "";
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+      }
     }
 
     &.bottom {
@@ -57,6 +91,28 @@ const FlippingNumberContainer = styled.div`
         height: 50%;
         border-top: 2px solid black;
         bottom: 0;
+        transform: rotateX(5deg);
+
+        &:before {
+          animation: ${({ animationDuration, shouldAnimate }) =>
+            shouldAnimate
+              ? css`
+                  ${show} ${animationDuration * 0.85}ms ease-in forwards
+                `
+              : "none"};
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 1) 100%
+          );
+          content: "";
+          height: 100%;
+          left: 0;
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
       }
     }
 
@@ -78,7 +134,29 @@ const FlippingNumberContainer = styled.div`
       }
 
       .bottom {
-        transform: rotateX(-0.5turn);
+        transform: rotateX(0.5turn);
+      }
+
+      .top:before {
+        animation: ${({ animationDuration, shouldAnimate }) =>
+          shouldAnimate
+            ? css`
+                ${show} ${animationDuration}ms ease-in forwards
+              `
+            : "none"};
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.1) 0%,
+          rgba(0, 0, 0, 1) 100%
+        );
+        content: "";
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 100;
       }
     }
   }
