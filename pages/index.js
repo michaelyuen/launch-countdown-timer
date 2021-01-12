@@ -37,11 +37,11 @@ export default function Home() {
       </Head>
 
       <AppContainer>
-        <Title>We're launching soon</Title>
+        <Title>Sue's first day at Iterable</Title>
         <Countdown />
-        <article style={{ marginTop: "250px", zIndex: 2 }}>
+        {/* <article style={{ marginTop: "250px", zIndex: 2 }}>
           [Share icons go here]
-        </article>
+        </article> */}
       </AppContainer>
       <Attribution />
     </>

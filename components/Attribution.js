@@ -23,7 +23,7 @@ export const AttributionContainer = styled.footer`
 export default function Attribution() {
   return (
     <AttributionContainer>
-      Challenge by{" "}
+      {/* Challenge by{" "}
       <a
         href="https://www.frontendmentor.io?ref=challenge"
         rel="nofollow noreferrer"
@@ -31,15 +31,14 @@ export default function Attribution() {
       >
         Frontend Mentor
       </a>
-      . Coded by{" "}
+      . Coded by{" "} */}
       <a
         href="https://mikey.baby"
         rel="nofollow noopener noreferrer"
         target="_blank"
       >
-        Michael Yuen
+        made with &lt;3 by my
       </a>
-      .
     </AttributionContainer>
   );
 }

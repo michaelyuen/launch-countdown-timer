@@ -74,10 +74,7 @@ const useCountdown = (endDate) => {
 
 export default function Countdown() {
   const router = useRouter();
-  const defaultTime = useMemo(
-    () => DateTime.local().plus({ days: 1, hours: 0, minutes: 0, seconds: 3 }),
-    []
-  );
+  const defaultTime = useMemo(() => DateTime.local(2021, 1, 20, 13), []);
   const initialDate = router.query.date
     ? DateTime.fromISO(
         Array.isArray(router.query.date)
@@ -88,8 +85,6 @@ export default function Countdown() {
   const { current } = useCountdown(
     initialDate && initialDate.isValid ? initialDate : defaultTime
   );
-
-  console.log(current);
 
   const INTERVAL = 1000;
   // const initDuration = 60;
