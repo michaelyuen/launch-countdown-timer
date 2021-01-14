@@ -10,22 +10,49 @@ export const CountdownContainer = styled.article`
   justify-content: center;
   margin-top: 75px;
 
+  .mobile {
+    display: block;
+  
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .desktop {
+    display: none;
+  
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+
   > div {
     margin: 1em 1em 0;
     position: relative;
     text-align: center;
-    width: 150px;
+    width: 50px;
     z-index: 1;
 
-    > div:first-child {
-      color: hsl(345, 95%, 68%);
-      font-size: 88px; // 75px;
-      line-height: 137px;
-      height: 137px;
+    @media (min-width: 768px) {
       width: 150px;
     }
 
-    > div:last-child {
+    > div:first-child {
+      color: hsl(345, 95%, 68%);
+      font-size: 29.3px;
+      line-height: 47px;
+      height: 45.7px;
+      width: 50px;
+
+      @media (min-width: 768px) {
+        font-size: 88px;
+        height: 137px;
+        line-height: 137px;
+        width: 150px;
+      }
+    }
+
+    > div.desktop, div.mobile {
       letter-spacing: 5px;
       margin-top: 28px;
       text-transform: uppercase;
@@ -118,7 +145,8 @@ export default function Countdown() {
               animationDuration={INTERVAL}
               number={current[key]}
             />
-            <div>{key.charAt(0).toUpperCase() + key.substr(1)}</div>
+            <div className="mobile">{key.charAt(0).toUpperCase()}</div>
+            <div className="desktop">{key.charAt(0).toUpperCase() + key.substr(1)}</div>
           </div>
         );
       })}

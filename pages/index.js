@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Frontend Mentor | Launch countdown timer</title>
+        <title>Sue's First Day at Iterable</title>
         <link
           rel="icon"
           type="image/png"
