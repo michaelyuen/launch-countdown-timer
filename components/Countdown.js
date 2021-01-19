@@ -141,7 +141,7 @@ export default function Countdown() {
     <CountdownContainer>
       {Object.keys(current).map((key) => {
         return (
-          <div>
+          <div key={key}>
             <FlippingNumber
               animationDuration={INTERVAL}
               number={current[key]}

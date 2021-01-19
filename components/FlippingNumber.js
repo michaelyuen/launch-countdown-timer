@@ -137,26 +137,30 @@ const FlippingNumberContainer = styled.div`
         transform: rotateX(0.5turn);
       }
 
-      .top:before {
-        animation: ${({ animationDuration, shouldAnimate }) =>
-          shouldAnimate
-            ? css`
-                ${show} ${animationDuration}ms ease-in forwards
-              `
-            : "none"};
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.1) 0%,
-          rgba(0, 0, 0, 1) 100%
-        );
-        content: "";
-        height: 100%;
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 100;
+      .top {
+        transform: rotateX(0deg);
+
+        &:before {
+          animation: ${({ animationDuration, shouldAnimate }) =>
+            shouldAnimate
+              ? css`
+                  ${show} ${animationDuration}ms ease-in forwards
+                `
+              : "none"};
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 1) 100%
+          );
+          content: "";
+          height: 100%;
+          left: 0;
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          z-index: 100;
+        }
       }
     }
   }
