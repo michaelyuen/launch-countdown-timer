@@ -12,7 +12,7 @@ export const CountdownContainer = styled.article`
 
   .mobile {
     display: block;
-  
+
     @media (min-width: 768px) {
       display: none;
     }
@@ -20,7 +20,7 @@ export const CountdownContainer = styled.article`
 
   .desktop {
     display: none;
-  
+
     @media (min-width: 768px) {
       display: block;
     }
@@ -52,7 +52,8 @@ export const CountdownContainer = styled.article`
       }
     }
 
-    > div.desktop, div.mobile {
+    > div.desktop,
+    div.mobile {
       letter-spacing: 5px;
       margin-top: 28px;
       text-transform: uppercase;
@@ -101,7 +102,7 @@ const useCountdown = (endDate) => {
 
 export default function Countdown() {
   const router = useRouter();
-  const defaultTime = useMemo(() => DateTime.local(2021, 1, 20, 13), []);
+  const defaultTime = useMemo(() => DateTime.local(2021, 1, 19, 13), []);
   const initialDate = router.query.date
     ? DateTime.fromISO(
         Array.isArray(router.query.date)
@@ -146,7 +147,9 @@ export default function Countdown() {
               number={current[key]}
             />
             <div className="mobile">{key.charAt(0).toUpperCase()}</div>
-            <div className="desktop">{key.charAt(0).toUpperCase() + key.substr(1)}</div>
+            <div className="desktop">
+              {key.charAt(0).toUpperCase() + key.substr(1)}
+            </div>
           </div>
         );
       })}
